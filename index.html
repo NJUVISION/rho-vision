@@ -9,7 +9,7 @@
 
 <title>
 
-  ρ-Vision: Efficient Visual Computing with Camera RAW Snapshots
+  Efficient Visual Computing with Camera RAW Snapshots
 
 </title>
 
@@ -103,7 +103,7 @@
   <article>
     <center>
 
-<h3>ρ-Vision: Efficient Visual Computing with Camera RAW Snapshots<br> 
+<h3>Efficient Visual Computing with Camera RAW Snapshots<br> 
 <h4>arxiv 2022</h4>
 </h3>
                
@@ -115,9 +115,9 @@
   
 <a href="https://scholar.google.com/citations?user=-G9vs-YAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Xu Zhang</a>
   
-<a href="https://scholar.google.com/citations?user=Dl0puDcAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">M. Salman Asif</a>
-  
 <a href="https://scholar.google.com/citations?user=0d8oaY4AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Xin Feng</a>
+  
+<a href="https://scholar.google.com/citations?user=Dl0puDcAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">M. Salman Asif</a>
   
 <a href="https://scholar.google.com/citations?user=78KxtRMAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Zhan Ma</a>
 
@@ -130,14 +130,14 @@
     
     <div class="col-auto mt-3 mt-md-0">
     	<a href="/assets/pdf/mbdisp22_paper.pdf">
-        <img src="/assets/img/misp22/model-isp22-paper.png" height="120px" alt="paper" title="Paper">
+        <img src="/assets/img/rho_vision-01.png" height="120px" alt="paper" title="Paper">
         <br><p>Paper</p>
         </a>
     </div>
     
     <div class="col-auto mt-3 mt-md-0">
-    	<a href="/assets/pdf/mbdisp22_paper.pdf">
-        <img src="/assets/img/misp22/model-isp22-paper.png" height="120px" alt="supplementary" title="Supplementary">
+    	<a href="/assets/pdf/rho_vision_supp.pdf">
+        <img src="/assets/img/rho_vision_supp-1.png" height="120px" alt="supplementary" title="Supplementary">
         <br><p>Supplementary</p>
         </a>
     </div>
@@ -150,8 +150,8 @@
     </div>
     
     <div class="col-auto mt-3 mt-md-0">
-    	<a href="/assets/pdf/mbdisp22.pdf">
-        <img src="/assets/img/misp22/poster_preview.png" height="120px" alt="code" title="Code">
+    	<a href="https://github.com/NJUVISION/rho-vision">
+        <img src="/assets/img/icons8-github.svg" height="120px" alt="code" title="Code">
         <br><p>Code</p>
         </a>
     </div>
@@ -174,75 +174,108 @@
 <hr>
 
 <h4 id="tldr">TLDR</h4>
-<p>Hybrid model-based and data-driven approach for modelling ISPs using learnable dictionaries. We explore RAW image reconstruction and improve downstream tasks like RAW Image Denoising via raw data augmentation-synthesis.</p>
+<p>This paper proposes a novel ρ-Vision to directly perform high-level semantic understanding and low-level compression using RAW images. The framework is demonstrated to provide better detection accuracy and compression than RGB-domain counterparts and is shown to be able to generalize across different camera sensors and task-specific models. Additionally, it has the potential to reduce ISP computation and processing time.</p>
 
 <center>
 
-<img class="img-fluid rounded z-depth-1 medium-zoom-image" src="/assets/img/misp22/paper_main.png" data-zoomable="" style="max-width: 100%;" alt="model-based learnable ISP poster">
+<img class="img-fluid rounded z-depth-1 medium-zoom-image" src="/assets/img/cover.jpg" data-zoomable="" style="max-width: 100%;" alt="raw-vision overview">
 </center>
 <p><br></p>
 
 <h4 id="abstract">Abstract</h4>
 
 <p align="justify">
- Digital cameras transform sensor RAW readings into RGB images by means of their Image Signal Processor (ISP). Computational photography tasks such as image denoising and colour constancy are commonly performed in the RAW domain, in part due to the inherent hardware design, but also due to the appealing simplicity of noise statistics that result from the direct sensor readings. Despite this, the <b>availability of RAW images is limited</b> in comparison with the abundance and diversity of available RGB data. Recent approaches have attempted to bridge this gap by estimating the RGB to RAW mapping: handcrafted model-based methods that are interpretable and controllable usually require manual parameter fine-tuning, while end-to-end learnable neural networks require large amounts of training data, at times with complex training procedures, and generally lack interpretability and parametric control. Towards addressing these limitations, we present a <b>novel hybrid model-based and data-driven ISP</b> that builds on canonical ISP operations and is both learnable and interpretable. Our proposed invertible model, capable of bidirectional mapping between RAW and RGB domains, employs end-to-end learning of rich parameter representations, i.e. dictionaries, that are free from direct parametric supervision and additionally enable realistic data augmentation. We evidence the value of our <b>data generation</b> process by extensive experiments under both RAW Image Reconstruction and RAW Image Denoising tasks, obtaining state-of-the-art performance in both. Moreover, we show that <b>our ISP can learn meaningful mappings from few data</b> samples, and that denoising models trained with our dictionary-based data augmentation are competitive despite having only few or zero ground-truth labels.
-</p>
-
+Conventional cameras capture image irradiance on a sensor and convert it to RGB images using an image signal processor (ISP). The images can then be used for photography or visual computing tasks in a variety of applications, such as public safety surveillance and autonomous driving. One can argue that since RAW images contain all the captured information, the conversion of RAW to RGB using an ISP is not necessary for visual computing. In this paper, we propose a novel ρ-Vision framework to perform high-level semantic understanding and low-level compression using RAW images without the ISP subsystem used for decades. Considering the scarcity of available RAW image datasets, we first develop an unpaired CycleR2R network based on unsupervised CycleGAN to train modular unrolled ISP and inverse ISP (invISP) models using unpaired RAW and RGB images. We can then flexibly generate simulated RAW images (simRAW) using any existing RGB image dataset and finetune different models originally trained for the RGB domain to process real-world camera RAW images. We demonstrate object detection and image compression capabilities in RAW-domain using RAW-domain YOLOv3 and RAW image compressor (RIC) on snapshots from various cameras. Quantitative results reveal that RAW-domain task inference provides better detection accuracy and compression compared to RGB-domain processing. Furthermore, the proposed ρ-Vision generalizes across various camera sensors and different task-specific models. Additional advantages of the proposed ρ-Vision that eliminates the ISP are the potential reductions in computations and processing times.</p>
 <p><br></p>
 
 <h4 id="overview">Overview</h4>
 
 <ul>
-  <li>We propose a <strong>hybrid</strong> model that combines model-based physical ISP operations and the power of data-driven deep learning approaches.
-We constrain the solution space with a differentiable ISP model, and we jointly learn the camera parameters as dictionaries.</li>
-  <li>We can <strong>learn camera parameters end-to-end</strong>, without manual fine-tuning or parameter supervision. Thus, we can model any camera without prior information.</li>
-  <li>This model presents <strong>modularity</strong> and <strong>interpretability</strong>, allowing us to add, modify or inspect any desired block.</li>
-  <li>Our approach is <strong>invertible</strong>, we can learn the forward and reverse transformations of any ISP camera.</li>
+  <li>We propose a <strong>Unpaired CycleR2R</strong> for conversion between RAW and RGB images. We train a CycleGAN to train an ISP for RAW-to-RGB and an invISP for RGB-to-RAW transformation (R2R) using unpaired RGB and RAW images. Such unsupervised learning using unpaired samples makes our approach much easier for practical implementation. In contrast, existing solutions (e.g., CycleISP, CIE-XYZ Net, and MBISPLD) are supervised models that require paired RAW and RGB images (from the same camera model).</li>
+  <li><strong>RAW-domain models</strong> (in principle) can be obtained by retraining corresponding RGB-domain models using the simRAW images generated by the proposed invISP. Such domain adaptation approaches need to be separately engineered for each individual task.</li>
+  <li>To encourage the reproducible research, a labeled <strong>MultiRAW</strong> dataset that contains >7k RAW images acquired using multiple different camera sensors, is made publicly accessible for RAW-domain processing. </li>
 </ul>
 
 <center>
-<img class="img-fluid rounded z-depth-1 medium-zoom-image" src="/assets/img/misp22/main_diagram.png" data-zoomable="" style="max-width: 100%;" alt="model-based ISP dictionary overview">
+<img class="img-fluid rounded z-depth-1 medium-zoom-image" src="/assets/img/cycler2r_framework.jpg" data-zoomable="" style="max-width: 100%;" alt="cycler2r_framework">
 </center>
-<div class="caption">Model-based ISP and a Dictionary-based learnable parameter space.</div>
+<div class="caption">Unpaired CycleR2R Framework.</div>
 <p><br></p>
 
 <h4 id="results">Results</h4>
 
 <center>
     <figure class="col-md-8 col-md-offset-2">
-    <img src="/assets/img/misp22/dslr.png" class="img-responsive" style="max-width: 100%;" alt="model-based ISP Raw results">
+    <img src="/assets/img/det_zero_shot_results.jpg" class="img-responsive" style="max-width: 100%;" alt="zero-shot RAW detection results">
         <figcaption>
-        From left to right: sRGB, RAW, Generated RAW using our method. Images from DSLR cameras Canon EOS 5D and NikonD700.
+          Zero-shot RAW-domain detection results.
         </figcaption>
     </figure>
 </center>
 
 <center>
     <figure class="col-md-8 col-md-offset-2">
-    <img src="/assets/img/misp22/reconst.png" class="img-responsive" style="max-width: 100%;" alt="model-based ISP RGB Raw results">
+    <img src="/assets/img/det_few_shot_results.jpg" class="img-responsive" style="max-width: 100%;" alt="few-shot RAW detection results">
         <figcaption>
-        Qualitative RAW Reconstruction comparison using SIDD Dataset. Our method reconstructs better colours, tones and brightness of RAW images. 
+          Few-shot RAW-domain detection results.
         </figcaption>
     </figure>
 </center>
 
 <center>
     <figure class="col-md-8 col-md-offset-2">
-    <img src="/assets/img/misp22/denoise.png" class="img-responsive" style="max-width: 100%;" alt="model-based ISP denoising results">
+    <img src="/assets/img/seg_zero_shot_results.jpg" class="img-responsive" style="max-width: 100%;" alt="zero-shot RAW segmentation results">
         <figcaption>
-        Qualitative RAW Denoising samples. Our model removes noise while keeping textures and details.
+          Zero-shot RAW-domain segmentation results.
         </figcaption>
     </figure>
+</center>
+
+<center>
+  <figure class="col-md-8 col-md-offset-2">
+  <img src="/assets/img/seg_zero_shot_visual.jpg" class="img-responsive" style="max-width: 100%;" alt="visual zero-shot RAW segmentation results">
+      <figcaption>
+        Visualization of zero-shot RAW-domain segmentation results.
+      </figcaption>
+  </figure>
+</center>
+
+<center>
+  <figure class="col-md-8 col-md-offset-2">
+        <img src="/assets/img/lossy_results.jpg" class="img-responsive" style="max-width: 47%;" alt="lossy RAW compression results">
+        <img src="/assets/img/lossless_results.jpg" class="img-responsive" style="max-width: 50%;" alt="lossy RAW compression results">
+      <figcaption>
+        Lossy & Lossless RAW compression results.
+      </figcaption>
+  </figure>
+</center>
+
+<center>
+  <figure class="col-md-8 col-md-offset-2">
+  <img src="/assets/img/lossy_visual.jpg" class="img-responsive" style="max-width: 100%;" alt="visual RAW compression results">
+      <figcaption>
+        Visualization of RAW lossy compression.
+      </figcaption>
+  </figure>
+</center>
+
+<center>
+  <figure class="col-md-8 col-md-offset-2">
+  <img src="/assets/img/progressive_decoding_visual.jpg" class="img-responsive" style="max-width: 100%;" alt="visual RAW compression results">
+      <figcaption>
+        Visualization of progressive decoding using RAW lossless compressor.
+      </figcaption>
+  </figure>
 </center>
 
 <p><br></p>
 
 <h4 id="bibtex-citation">BibTeX Citation</h4>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@article{conde2022modelbased, 
-	title={Model-Based Image Signal Processors via Learnable Dictionaries},
-	author={Conde, Marcos V. and McDonagh, Steven and Maggioni, Matteo and Leonardis, Ales and Pérez-Pellitero, Eduardo},
-	journal={Proceedings of the AAAI Conference on Artificial Intelligence}, 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@article{li2022efficient, 
+	title={Efficient Visual Computing with Camera RAW Snapshots},
+	author={Zhihao Li, Ming Lu, Xu Zhang, Xin Feng, M. Salman Asif, and Zhan Ma},
+	journal={arxiv}, 
 	url={https://ojs.aaai.org/index.php/AAAI/article/view/19926}, 
 	year={2022}, 
 }
