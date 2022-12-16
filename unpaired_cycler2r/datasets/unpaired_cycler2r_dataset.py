@@ -75,7 +75,6 @@ class UnpairedCycleR2RDataset(Dataset):
                 paths += [str(s) for s in Path(dataroot).glob(f'*/*{suffix}')]
             paths = sorted(paths)
         if split is not None:
-            assert osp.isabs(split)
             with open(split, 'r') as f:
                 split_names = [line.strip() for line in f.readlines()]
             paths = [path for path in paths if osp.basename(path).split('.')[0] in split_names]

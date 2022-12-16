@@ -131,3 +131,5 @@ dmypy.json
 #
 work_dirs
 visual
+*pth
+simulated_preview.png

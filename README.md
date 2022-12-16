@@ -51,15 +51,15 @@ datasets
 
 ## Training
 ```bash
-python tools/train.py configs/unpaired_cycler2r/unpaired_cycler2r_in_bdd100k_rgb2iphone_raw_20k.py
+python train.py configs/unpaired_cycler2r/unpaired_cycler2r_in_bdd100k_rgb2iphone_raw_20k.py
 ```
 
 ## Inference
-Please download the pretrained models first.
+Please download the [pretrained model](https://box.nju.edu.cn/f/d1e199cd5ada49b88ad9/) first.
 
 You coud inference using command,
 ```bash
-python inference.py --ckpt bdd100k_rgb_to_iphone_raw.pth --rgb  resources/bdd100k.jpg
+python inference.py --ckpt bdd100k_rgb_to_iphone_raw.pth --rgb resources/bdd100k.jpg
 ```
 
 or in your code

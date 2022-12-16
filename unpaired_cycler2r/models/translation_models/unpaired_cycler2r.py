@@ -1,11 +1,13 @@
 # Copyright (c) OpenMMLab. All rights reserved.
-from mmgen.models.builder import MODELS, build_module
-from mmgen.models.cyclegan import CycleGAN
-import torch
-from mmgen.models.common import set_requires_grad
-from torch.nn.parallel.distributed import _find_tensors
 from collections import OrderedDict
+
+import torch
 import torch.distributions as D
+from torch.nn.parallel.distributed import _find_tensors
+
+from mmgen.models.common import set_requires_grad
+from mmgen.models.builder import MODELS, build_module
+from mmgen.models.translation_models.cyclegan import CycleGAN
 
 
 @MODELS.register_module()

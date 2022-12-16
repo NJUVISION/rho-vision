@@ -23,7 +23,7 @@ class DemoModel(nn.Module):
                 state_dict[k[len('generator.'):]] = v
 
         # get invISP model
-        self.model = build_module(type='inverseISP')
+        self.model = build_module(dict(type='inverseISP'))
         self.model.load_state_dict(state_dict, strict=False)
         self.model.eval()
 
@@ -49,22 +49,22 @@ class DemoModel(nn.Module):
         _x[:, 3] = x[:, 0, 1::2, 1::2]
         return _x
 
-    def forward(self, img, mosaic=False):
+    def forward(self, rgb, mosaic=False):
         with torch.no_grad():
             # get illumination condition
-            condition = self._get_illumination_condition(img)
+            condition = self._get_illumination_condition(rgb)
             # get simulated RAW image
-            x = self.model(x, condition, rev=False)
-            x = torch.clamp(x, 0, 1)
+            raw = self.model(rgb, condition, rev=False)
+            raw = torch.clamp(raw, 0, 1)
             if mosaic:
-                x = self._mosaic(x)
-        return x
+                raw = self._mosaic(raw)
+        return raw
 
 
 if __name__ == '__main__':
     args = argparse.ArgumentParser()
-    args.add_argument('ckpt', type=str)
-    args.add_argument('rgb', type=str)
+    args.add_argument('--ckpt', type=str)
+    args.add_argument('--rgb', type=str)
     args = args.parse_args()
 
     model = DemoModel(args.ckpt)
@@ -74,7 +74,7 @@ if __name__ == '__main__':
     model = model.cuda()
     img = img.cuda()
 
-    x = model(img, mosaic=True)
+    x = model(img, mosaic=False)
     x = x[0].permute(1, 2, 0).cpu().numpy()
     x = (x * 255).astype(np.uint8)
     imwrite('simulated_preview.png', x)
