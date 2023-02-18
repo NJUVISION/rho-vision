@@ -44,8 +44,8 @@ class DemoModel(nn.Module):
         h, w = x.shape[2:]
         _x = torch.zeros(x.shape[0], 4, h // 2, w // 2, device=x.device)
         _x[:, 0] = x[:, 0, 0::2, 0::2]
-        _x[:, 1] = x[:, 0, 1::2, 0::2]
-        _x[:, 2] = x[:, 0, 0::2, 1::2]
+        _x[:, 1] = x[:, 0, 0::2, 1::2]
+        _x[:, 2] = x[:, 0, 1::2, 0::2]
         _x[:, 3] = x[:, 0, 1::2, 1::2]
         return _x
 
