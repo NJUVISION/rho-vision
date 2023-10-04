@@ -11,7 +11,7 @@ class TinyEncoder(nn.Module):
             nn.LeakyReLU(negative_slope=0.2, inplace=True),
             nn.AvgPool2d(2, 2),
 
-            nn.Conv2d(32, channnels, 3, 1, 2),
+            nn.Conv2d(32, channnels, 3, 1, 1),
             nn.LeakyReLU(negative_slope=0.2, inplace=True),
             nn.AvgPool2d(2, 2),
 
