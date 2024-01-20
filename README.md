@@ -1,4 +1,4 @@
-# Efficient Visual Computing with Camera RAW Snapshots
+# [T-PAMI 2024] Efficient Visual Computing with Camera RAW Snapshots
 
 ![](resources/cover.png)
 
