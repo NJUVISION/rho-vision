@@ -277,7 +277,7 @@ d-article d-contents nav ul { padding-left: 1em; margin-top: 0; margin-bottom: 6
 
 d-article d-contents nav ul li { margin-bottom: 0.25em; }
 
-d-article d-contents .figcaption { line-height: 1.4em; }
+d-article d-contents .figcaption { line-height: 1.4em; font-size: 0.8em;}
 
 d-article d-contents toc-line { border-right: 1px solid var(--global-divider-color); grid-column: toc-line; }
 
