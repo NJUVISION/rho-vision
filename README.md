@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ```
 
 ## Datasets
-(*required*) Download the [MulitRAW](https://box.nju.edu.cn/d/0f4b5206cf734bd889aa/).
+(*required*) Download the [MulitRAW](https://box.nju.edu.cn/d/0f4b5206cf734bd889aa/) [LUCID subset (passwd: 46t1)](https://pan.baidu.com/s/1BmsahDDfvmeQCLiIhC4O-g).
 
 (*optional*) Download the [BDD100K](https://www.bdd100k.com/).
 
